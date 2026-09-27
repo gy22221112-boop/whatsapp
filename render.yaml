@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: whatsapp-warmup-bot
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: BOT_USERNAME
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: APP_URL
+        sync: false
+      - key: MAX_ACCOUNTS_PER_USER
+        value: 10
+      - key: ACTIVITY_CHECK_SECONDS
+        value: 600
+      - key: SESSION_TTL_MINUTES
+        value: 60
+    healthCheckPath: /

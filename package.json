@@ -1,0 +1,29 @@
+{
+  "name": "whatsapp-warmup-service",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.18",
+    "dotenv": "^16.4.1",
+    "express": "^4.21.2",
+    "node-cron": "^4.6.0",
+    "pg": "^8.14.0",
+    "qrcode": "^1.5.4",
+    "telegraf": "^4.16.0",
+    "uuid": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "@types/pg": "^8.16.0",
+    "@types/qrcode": "^1.5.4",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

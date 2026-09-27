@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: whatsapp-warmup-app
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/whatsapp_warmup
+    depends_on:
+      - db
+    ports:
+      - '3000:3000'
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    container_name: whatsapp-warmup-db
+    environment:
+      POSTGRES_DB: whatsapp_warmup
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
